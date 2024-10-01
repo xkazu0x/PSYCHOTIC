@@ -6,6 +6,7 @@ layout (std140, binding = 0) uniform per_frame_data {
 };
 
 layout (location = 0) out vec3 out_color;
+layout (location = 1) out vec2 out_uv;
 
 const vec3 pos[8] = vec3[8](
 	vec3(-1.0, -1.0, 1.0), vec3( 1.0, -1.0, 1.0),
@@ -21,6 +22,14 @@ const vec3 col[8] = vec3[8](
 
 	vec3(1.0, 1.0, 0.0), vec3(0.0, 0.0, 1.0),
 	vec3(0.0, 1.0, 0.0), vec3(1.0, 0.0, 0.0)
+);
+
+const vec2 tc[8] = vec2[8](
+	vec2(0.0, 0.0), vec2(1.0, 0.0),
+	vec2(1.0, 1.0), vec2(0.0, 1.0),
+
+	vec2(0.0, 0.0), vec2(1.0, 0.0),
+	vec2(1.0, 1.0), vec2(0.0, 1.0)
 );
 
 const int indices[36] = int[36](
@@ -42,4 +51,5 @@ void main() {
 	int i = indices[gl_VertexID];
 	gl_Position = mvp * vec4(pos[i], 1.0);
 	out_color = is_wire_frame > 0 ? vec3(0.0) : col[i];
+	out_uv = tc[i];
 }

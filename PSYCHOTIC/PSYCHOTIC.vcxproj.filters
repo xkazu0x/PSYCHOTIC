@@ -26,4 +26,9 @@
     <None Include="res\shaders\shader.vert" />
     <None Include="res\shaders\shader.frag" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\goreshit.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

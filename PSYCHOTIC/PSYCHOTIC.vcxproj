@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +145,9 @@
   <ItemGroup>
     <None Include="res\shaders\shader.frag" />
     <None Include="res\shaders\shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\goreshit.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

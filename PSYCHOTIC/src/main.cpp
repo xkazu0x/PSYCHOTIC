@@ -1,7 +1,12 @@
 #include <glad/glad.h>
-#include <glfw3.h>
+#include <glfw/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb/stb_image_write.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -117,6 +122,25 @@ int main() {
 	glEnable(GL_POLYGON_OFFSET_LINE);
 	glPolygonOffset(-1.0f, -1.0f);
 
+	//
+	//
+	int width, height, comp;
+	const uint8_t *img = stbi_load("res/textures/goreshit.jpg", &width, &height, &comp, 3);
+
+	GLuint texture;
+	glCreateTextures(GL_TEXTURE_2D, 1, &texture);
+	glTextureParameteri(texture, GL_TEXTURE_MAX_LEVEL, 0);
+	glTextureParameteri(texture, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTextureParameteri(texture, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glTextureStorage2D(texture, 1, GL_RGB8, width, height);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+
+	glTextureSubImage2D(texture, 0, 0, 0, width, height, GL_RGB, GL_UNSIGNED_BYTE, img);
+	glBindTextures(0, 1, &texture);
+
+	stbi_image_free((void*)img);
+
 	while (!glfwWindowShouldClose(window.handle)) {
 		int width, height;
 		glfwGetFramebufferSize(window.handle, &width, &height);
@@ -138,15 +162,18 @@ int main() {
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
+		/*
 		frame_data.is_wire_frame = true;
 		glNamedBufferSubData(per_frame_data_buffer, 0, buffer_size, &frame_data);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+		*/
 
 		glfwSwapBuffers(window.handle);
 		glfwPollEvents();
 	}
 
+	glDeleteTextures(1, &texture);
 	glDeleteBuffers(1, &per_frame_data_buffer);
 	glDeleteProgram(program);
 	glDeleteShader(fragment_shader);
@@ -166,6 +193,14 @@ void glfw_error_callback(int error, const char *description) {
 void glfw_key_callback(GLFWwindow *window, int key, int scancode, int action, int mods) {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	}
+	if (key == GLFW_KEY_F1 && action == GLFW_PRESS) {
+		int width, height;
+		glfwGetFramebufferSize(window, &width, &height);
+		uint8_t *ptr = (uint8_t*)malloc(width * height * sizeof(int));
+		glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, ptr);
+		stbi_write_png("screenshot.png", width, height, 4, ptr, 0);
+		free(ptr);
 	}
 }
 
