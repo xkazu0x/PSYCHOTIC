@@ -1,12 +1,16 @@
 #version 460 core
 
+layout (location = 0) in vec2 in_position;
+layout (location = 1) in vec2 in_uv;
+layout (location = 2) in vec4 in_color;
+
 layout (std140, binding = 0) uniform per_frame_data {
 	uniform mat4 mvp;
 	uniform int is_wire_frame;
 };
 
-layout (location = 0) out vec3 out_color;
-layout (location = 1) out vec2 out_uv;
+layout (location = 0) out vec2 out_uv;
+layout (location = 1) out vec4 out_color;
 
 const vec3 pos[8] = vec3[8](
 	vec3(-1.0, -1.0, 1.0), vec3( 1.0, -1.0, 1.0),
@@ -48,8 +52,12 @@ const int indices[36] = int[36](
 );
 
 void main() {
-	int i = indices[gl_VertexID];
-	gl_Position = mvp * vec4(pos[i], 1.0);
-	out_color = is_wire_frame > 0 ? vec3(0.0) : col[i];
-	out_uv = tc[i];
+	//int i = indices[gl_VertexID];
+	//gl_Position = mvp * vec4(pos[i], 1.0);
+	//out_color = is_wire_frame > 0 ? vec3(0.0) : col[i];
+	//out_uv = tc[i];
+
+	out_uv = in_uv;
+	out_color = in_color;
+	gl_Position = mvp * vec4(in_position.xy, 0.0, 1.0);
 }
