@@ -12,10 +12,10 @@ struct window_desc {
 };
 
 struct window_state {
-	GLFWwindow *window;
+	GLFWwindow *handle;
 };
 
-static window_state state;
+static window_state window;
 
 void glfw_error_callback(int error, const char* description);
 void glfw_key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
@@ -38,21 +38,31 @@ int main() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	GLFWwindow *window = glfwCreateWindow(desc.width, desc.height, desc.title, nullptr, nullptr);
-	if (!window) {
+	GLFWmonitor *monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+
+	glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+
+	GLFWwindow *handle = glfwCreateWindow(desc.width, desc.height, desc.title, nullptr, nullptr);
+	if (!handle) {
 		glfwTerminate();
 		return -1;
 	} else {
-		state.window = window;
+		window.handle = handle;
 	}
-	
-	glfwSetKeyCallback(state.window, glfw_key_callback);
-	glfwSetWindowSizeCallback(state.window, glfw_window_size_callback);
 
-	glfwMakeContextCurrent(state.window);
+	glfwSetWindowPos(window.handle, (mode->width - desc.width) / 2, (mode->height - desc.height) / 2);
+	
+	glfwSetKeyCallback(window.handle, glfw_key_callback);
+	glfwSetWindowSizeCallback(window.handle, glfw_window_size_callback);
+
+	glfwMakeContextCurrent(window.handle);
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-		glfwDestroyWindow(state.window);
+		glfwDestroyWindow(window.handle);
 		glfwTerminate();
 		return -1;
 	}
@@ -85,14 +95,14 @@ int main() {
 	glLinkProgram(program);
 
 	
-	while (!glfwWindowShouldClose(state.window)) {
+	while (!glfwWindowShouldClose(window.handle)) {
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glUseProgram(program);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 
-		glfwSwapBuffers(state.window);
+		glfwSwapBuffers(window.handle);
 		glfwPollEvents();
 	}
 
@@ -101,7 +111,7 @@ int main() {
 	glDeleteShader(vertex_shader);
 	glDeleteVertexArrays(1, &vao);
 
-	glfwDestroyWindow(state.window);
+	glfwDestroyWindow(window.handle);
 	glfwTerminate();
 
 	return 0;
