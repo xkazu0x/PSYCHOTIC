@@ -36,9 +36,21 @@
     <ClCompile Include="vendor\imgui\src\imgui_widgets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\window\window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\shader.vert" />
-    <None Include="res\shaders\shader.frag" />
+    <None Include="res\shaders\cube.vert" />
+    <None Include="res\shaders\cube.frag" />
+    <None Include="res\shaders\mesh.vert" />
+    <None Include="res\shaders\mesh.frag" />
+    <None Include="res\shaders\imgui.vert" />
+    <None Include="res\shaders\imgui.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\window\window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

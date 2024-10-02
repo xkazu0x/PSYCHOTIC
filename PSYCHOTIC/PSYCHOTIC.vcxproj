@@ -76,13 +76,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\include;$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;$(SolutionDir)PSYCHOTIC\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\lib;$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,15 +93,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\include;$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;$(SolutionDir)PSYCHOTIC\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\lib;$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -110,13 +110,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\include;$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;$(SolutionDir)PSYCHOTIC\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\lib;$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -127,19 +127,20 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\include;$(SolutionDir)PSYCHOTIC\vendor\imgui\include;$(SolutionDir)PSYCHOTIC\vendor\stb_image;$(SolutionDir)PSYCHOTIC\vendor\glm;$(SolutionDir)PSYCHOTIC\vendor\glad\include;$(SolutionDir)PSYCHOTIC\vendor\glfw\include;$(SolutionDir)PSYCHOTIC\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)PSYCHOTIC\vendor\assimp\lib;$(SolutionDir)PSYCHOTIC\vendor\glfw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp-vc143-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\window\window.cpp" />
     <ClCompile Include="vendor\glad\src\glad.c" />
     <ClCompile Include="vendor\imgui\src\imgui.cpp" />
     <ClCompile Include="vendor\imgui\src\imgui_demo.cpp" />
@@ -148,8 +149,15 @@
     <ClCompile Include="vendor\imgui\src\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\shader.frag" />
-    <None Include="res\shaders\shader.vert" />
+    <None Include="res\shaders\imgui.frag" />
+    <None Include="res\shaders\imgui.vert" />
+    <None Include="res\shaders\mesh.frag" />
+    <None Include="res\shaders\mesh.vert" />
+    <None Include="res\shaders\cube.frag" />
+    <None Include="res\shaders\cube.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\window\window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
